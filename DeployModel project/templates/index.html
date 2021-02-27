@@ -1,0 +1,104 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="{% static "css/styl.css" %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="shortcut icon" href="{% static "Data/a (1).jpg" %}">
+
+    <title>Deteksi Penyakit Daun Kentang</title>
+  </head>
+  <body>
+  	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  	  <div class="container">
+  	  	
+	  	  <a class="navbar-brand" href="#"></a>
+	  	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	  	    <span class="navbar-toggler-icon"></span>
+	  	  </button>
+	  	  <div class="collapse navbar-collapse" id="navbarNav">
+	  	    <ul class="navbar-nav">
+	  	      <li class="nav-item active">
+	  	        <a class="nav-link" href="http://127.0.0.1:8000/">Home <span class="sr-only">(current)</span></a>
+	  	      </li>
+	  	      <li class="nav-item">
+	  	        <a class="nav-link" href="/prediksi">Prediksi</a>
+	  	      </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/dataImage">Dataset  <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/dataset">Fitur  <span class="sr-only">(current)</span></a>
+            </li>
+	  	    </ul>
+	  	  </div>
+  	  </div>
+
+  	</nav>
+
+  	<div class="container-fluid hero">
+		<div class="row justify-content-center">
+			<div class="col-8">
+				<h1 class="text-center">Deteksi Penyakit Daun Kentang Berdasarkan Fitur Tekstur, Warna, dan Bentuk</h1>
+			</div>
+		</div>
+  	</div>
+
+    <div class="container py-4">
+
+
+    <section>
+    	<div class="row justify-content-center">
+    		<div class="col-lg-7">
+    			<div class="section-title">
+    				<h2>Cara kerja</h2>
+    			</div>
+    			<ul class="list-group list-group-flush">
+    			  <li class="list-group-item"><span class="btn btn-warning mr-1">1</span> Gambar Diinputkan</li>
+    			  <li class="list-group-item"><span class="btn btn-warning mr-1">2</span>Gambar Daun Dipisahkan dengan latar belakang nya menggunakan Algoritma Grabcut</li>
+    			  <li class="list-group-item"><span class="btn btn-warning mr-1">3</span>Bercak Daun Diisolasi menggunakan multiotsu thresholding</li>
+    			  <li class="list-group-item"><span class="btn btn-warning mr-1">4</span>Bercak Daun diekstraksi Fiturnya berdasarkan Tektur, warna dan bentuk</li>
+    			  <li class="list-group-item"><span class="btn btn-warning mr-1">5</span>Citra diklasifikasikan menggunakan SVM dengan kernel <b>linear</b> paramameter <b>C = 1</b></li>
+    			</ul>
+    		</div>
+    	</div>
+    </section>
+
+
+    	<div class="row mt-5 justify-content-center">
+    		<div class="col-lg-6">
+    			<a href="/prediksi" class="btn btn-info">Coba Prediksi</a>
+    		</div>
+    	</div>
+    	<div class="row py-5">
+    		<div class="col-5">
+    		</div>
+    	</div>
+    </div>
+
+    <div class="footer">
+      <div class="containter">
+        <div class="row justify-content-center copy">
+          <div class="col">
+            <p class="text-center">@Deteksi Penyakit Daun Kentang</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

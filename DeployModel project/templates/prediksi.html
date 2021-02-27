@@ -1,0 +1,182 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="{% static "css/styl.css" %}">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="shortcut icon" href="{% static "Data/a (1).jpg" %}">
+
+    <title>Prediksi Penyakit Daun Kentang</title>
+  </head>
+  <body>
+  	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  	  <div class="container">
+  	  	
+	  	  <a class="navbar-brand" href="#"></a>
+	  	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	  	    <span class="navbar-toggler-icon"></span>
+	  	  </button>
+	  	  <div class="collapse navbar-collapse" id="navbarNav">
+	  	    <ul class="navbar-nav">
+	  	      <li class="nav-item">
+	  	        <a class="nav-link" href="http://127.0.0.1:8000/">Home</a>
+	  	      </li>
+	  	      <li class="nav-item active">
+	  	        <a class="nav-link" href="/prediksi">Prediksi <span class="sr-only">(current)</span></a>
+	  	      </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/dataImage">Dataset  <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/dataset">Fitur  <span class="sr-only">(current)</span></a>
+            </li>
+	  	    </ul>
+	  	  </div>
+  	  </div>
+
+  	</nav>
+
+
+    <div class="container-fluid" id="breadcrumbs">
+      <div class="row justify-content-center">
+        <div class="col-8">
+          <h1 class="text-center">Deteksi Penyakit Daun Kentang</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="container py-4">
+
+    	<div class="row">
+    		<div class="col">
+    		</div>
+    	</div>
+
+    	<div class="row justify-content-center mt-5">
+    		<div class="col-lg-4">
+    			<form action="predictImage" method="post" enctype="multipart/form-data">
+    				{% csrf_token %}
+    				<div class="form-group">
+    				    <label for="exampleFormControlFile1">Inputkan Gambar Daun Kentang</label>
+    				    <input type="file" name="filepath" class="form-control-file" id="exampleFormControlFile1">
+    				  </div>
+    				<input type="submit" class="mb-3 btn btn-dark" name="" value="prediksi" id="btnpredik">
+    			</form>
+                <img src={{filePathName}}>
+    		</div>
+
+    		<div class="col-3 align-self-center" id="jenisdauncard">
+          <div class="card text-center">
+            <h5 class="card-header">Jenis Daun</h5>
+            <div class="card-body">
+              <h5 class="card-title" id="jenisDaun">{{prediksi}}</h5>
+            </div>
+          </div>
+        </div>
+
+            <div class="col-3 align-self-center" id="waktucard">
+              <div class="card text-center">
+                <h5 class="card-header">Waktu Prediksi (s)</h5>
+                <div class="card-body">
+                  <h5 class="card-title">{{waktu}}</h5>
+                </div>
+              </div>
+            </div>
+    	</div>
+
+      <div class="row text-center">
+        <div class="col-lg-4">
+          <img src="{% static "img/loader.png" %}" width="100px" id="loader">
+        </div>
+      </div>
+
+   <!--   <div class="row">
+        <div class="col offset-lg-1">
+          <a href="" class="btn btn-warning" id="tampilfitur">tampilkan fitur</a>
+        </div>
+      </div>
+-->
+    </div>
+
+
+    <div class="container" id="fiturPrediksi">
+      <div class="row justify-content-center">
+        <div class="col-lg-5">
+          <h4 class="text-center">Fitur Daun {{prediksi}}</h4>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-3">
+        <table id="fitur" class="mb-4"> 
+            <thead> 
+              <tr> 
+                <th>Contrast</th> 
+                <th>Energy</th>
+                <th>Homogenity</th>
+                <th>Correlation</th>
+                <th>Mean</th>
+                <th>St.Deviasi</th>
+                <th>Skewness</th>
+                <th>Kurtosis</th>
+                <th>Area</th>
+                <th>Perimeter</th>
+                <th>Solidity</th>
+                <th>Compactness</th>
+                <th>Convexity</th>
+              </tr> 
+            </thead> 
+            <tbody> 
+            <!-- jinja2 Technique -->
+            {% if dataset %}   
+              {% for i in dataset %} 
+                <tr> 
+                  <td>{{i.Contrast}}</td> 
+                  <td>{{i.Energy}}</td> 
+                  <td>{{i.Homogenity}}</td> 
+                  <td>{{i.Correlation}}</td> 
+                  <td>{{i.Mean}}</td> 
+                  <td>{{i.Deviasi}}</td> 
+                  <td>{{i.Skewness}}</td> 
+                  <td>{{i.Kurtosis}}</td> 
+                  <td>{{i.Area}}</td> 
+                  <td>{{i.Perimeter}}</td> 
+                  <td>{{i.Solidity}}</td> 
+                  <td>{{i.Compactness}}</td> 
+                  <td>{{i.Convexity}}</td> 
+                </tr> 
+              {% endfor %} 
+            {% endif %} 
+            </tbody> 
+          </table> 
+
+          <a href="/dataset" class="btn btn-info mt-5"> lihat dataset</a>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="containter">
+        <div class="row justify-content-center copy">
+          <div class="col">
+            <p class="text-center">@Deteksi Penyakit Daun Kentang</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static "js/script.js" %}"></script>
+
+  </body>
+</html>

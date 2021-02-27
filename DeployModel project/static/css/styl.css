@@ -1,0 +1,140 @@
+body{
+}
+
+.hero{
+	background-image: url('/static/img/hero.jpg');
+	background-size: cover;
+	background-position: center center;
+	height: 250px;
+	position: relative;
+}
+
+.hero::before{
+	content: '';
+	background-color: rgba(0,0,0,0.7);
+	position: absolute;
+	top: 0;bottom: 0;right: 0;left: 0;
+}
+
+
+.hero h1{
+	margin-top: 70px;
+	color: #fff;
+}
+
+#breadcrumbs{
+  background-image: url('/static/img/hero.jpg');
+  background-size: cover;
+  background-position: center center;
+  height: 150px;
+  position: relative;
+}
+
+#breadcrumbs:before{
+  content: '';
+  background-color: rgba(0,0,0,0.7);
+  position: absolute;
+  top: 0;bottom: 0;right: 0;left: 0;
+}
+
+#breadcrumbs h1{
+    margin-top: 50px;
+    color: #fff;
+}
+
+
+
+.section-title {
+  text-align: center;
+  padding-bottom: 30px;
+  position: relative;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.section-title h2::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #AABF0D;
+  bottom: 0;
+  left: calc(50% - 25px);
+}
+
+#loader{
+  animation: muter 5s linear infinite;
+  display: none;
+}
+
+@keyframes muter{
+  0%{
+    transform: rotate(0deg);
+  }100%{
+    transform: rotate(360deg);
+  }
+}
+
+#jenisdauncard, #waktucard{
+  /*display: none;*/
+}
+
+#fitur{
+	font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 12px;
+}
+
+#fitur td, #fitur th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#fitur tr:nth-child(even){background-color: #f2f2f2;}
+
+#fitur tr:hover {background-color: #ddd;}
+
+#fitur th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+.dataset img{
+  width: 100px;
+}
+
+
+.dataset table tbody th{
+  vertical-align: middle;
+}
+.dataset table tbody td{
+  vertical-align: middle;
+}
+
+#fiturPrediksi{
+  margin-bottom: 50px;
+}
+
+
+.footer{
+  background-color: #111;
+  height: 60px;
+}
+
+.footer p{
+  color: #fff;
+  margin-top: 20px;
+}
+
